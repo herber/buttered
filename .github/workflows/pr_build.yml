@@ -1,6 +1,6 @@
 name: Build Check
 
-on: [commit]
+on: [push]
 
 jobs:
     build:
