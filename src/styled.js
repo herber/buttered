@@ -4,9 +4,8 @@ import { css } from './css';
 /**
  * styled function
  * @param {string} tag
- * @param {function} forwardRef
  */
-function styled(tag, forwardRef) {
+function styled(tag) {
     let _ctx = this || {};
 
     return function wrapper() {
@@ -20,15 +19,14 @@ function styled(tag, forwardRef) {
             let _previousClassName = _props.className || Styled.className;
 
             // _ctx.p: is the props sent to the context
-            // _ctx.p = Object.assign({ theme: useTheme && useTheme() }, _props);
+            _ctx.p = _props;
 
             // Set a flag if the current components had a previous className
             // similar to goober. This is the append/prepend flag
             // The _empty_ space compresses better than `\s`
-            _ctx.o = / *go\d+/g.test(_previousClassName);
+            _ctx.o = / *butter_\d+/g.test(_previousClassName);
 
             _props.className =
-                // Define the new className
                 css.apply(_ctx, _args) + (_previousClassName ? ' ' + _previousClassName : '');
 
             // If the forwardRef fun is defined we have the ref

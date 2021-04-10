@@ -1,6 +1,6 @@
 {
   "name": "buttered",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A less than 1KB css-in-js solution",
   "sideEffects": false,
   "main": "dist/buttered.js",
