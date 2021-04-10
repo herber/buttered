@@ -1,89 +1,67 @@
 {
-  "name": "goober",
-  "version": "2.0.37",
+  "name": "buttered",
+  "version": "1.0.0-alpha.1",
   "description": "A less than 1KB css-in-js solution",
   "sideEffects": false,
-  "main": "dist/goober.js",
-  "module": "dist/goober.esm.js",
-  "umd:main": "dist/goober.umd.js",
+  "main": "dist/buttered.js",
+  "module": "dist/buttered.esm.js",
+  "umd:main": "dist/buttered.umd.js",
   "source": "src/index.js",
-  "unpkg": "dist/goober.umd.js",
-  "types": "goober.d.ts",
+  "unpkg": "dist/buttered.umd.js",
+  "types": "buttered.d.ts",
   "files": [
     "src",
     "macro",
-    "global/dist",
-    "global/src",
-    "global/package.json",
-    "global/global.d.ts",
-    "prefixer/dist",
-    "prefixer/src",
-    "prefixer/package.json",
-    "prefixer/autoprefixer.d.ts",
-    "prefixer/README.md",
-    "should-forward-prop/dist",
-    "should-forward-prop/src",
-    "should-forward-prop/package.json",
-    "should-forward-prop/should-forward-prop.d.ts",
-    "should-forward-prop/README.md",
     "README.md",
     "dist",
     "package.json",
     "typings.json",
-    "goober.d.ts"
+    "buttered.d.ts"
   ],
   "exports": {
     ".": {
-      "require": "./dist/goober.js",
-      "browser": "./dist/goober.modern.js",
-      "import": "./dist/goober.esm.js",
-      "umd": "./dist/goober.umd.js"
+      "require": "./dist/buttered.js",
+      "browser": "./dist/buttered.modern.js",
+      "import": "./dist/buttered.esm.js",
+      "umd": "./dist/buttered.umd.js"
     },
     "./macro": "./macro/index.js",
     "./global": {
-      "browser": "./global/dist/goober-global.modern.js",
-      "import": "./global/dist/goober-global.esm.js",
-      "require": "./global/dist/goober-global.js",
-      "umd": "./global/dist/goober-global.umd.js"
+      "browser": "./global/dist/buttered-global.modern.js",
+      "import": "./global/dist/buttered-global.esm.js",
+      "require": "./global/dist/buttered-global.js",
+      "umd": "./global/dist/buttered-global.umd.js"
     },
     "./prefixer": {
-      "browser": "./prefixer/dist/goober-autoprefixer.modern.js",
-      "import": "./prefixer/dist/goober-autoprefixer.esm.js",
-      "require": "./prefixer/dist/goober-autoprefixer.js",
-      "umd": "./prefixer/dist/goober-autoprefixer.umd.js"
+      "browser": "./prefixer/dist/buttered-autoprefixer.modern.js",
+      "import": "./prefixer/dist/buttered-autoprefixer.esm.js",
+      "require": "./prefixer/dist/buttered-autoprefixer.js",
+      "umd": "./prefixer/dist/buttered-autoprefixer.umd.js"
     },
     "./should-forward-prop": {
-      "browser": "./should-forward-prop/dist/goober-should-forward-prop.modern.js",
-      "import": "./should-forward-prop/dist/goober-should-forward-prop.esm.js",
-      "require": "./should-forward-prop/dist/goober-should-forward-prop.js",
-      "umd": "./should-forward-prop/dist/goober-should-forward-prop.umd.js"
+      "browser": "./should-forward-prop/dist/buttered-should-forward-prop.modern.js",
+      "import": "./should-forward-prop/dist/buttered-should-forward-prop.esm.js",
+      "require": "./should-forward-prop/dist/buttered-should-forward-prop.js",
+      "umd": "./should-forward-prop/dist/buttered-should-forward-prop.umd.js"
     }
   },
   "scripts": {
-    "test": "npm run test-ts && npm run test-unit -- --ci --coverage && npm run build && npm run test-perf",
-    "test-perf": "NODE_ENV=production node benchmarks/perf.js",
-    "test-perf-hash": "NODE_ENV=production node benchmarks/perf-hash.js",
-    "test-unit": "jest --setupFiles ./tests/setup.js --roots ./src packages && npm run test-addon-global && npm run test-addon-prefixer",
-    "test-addon-global": "cd global && npm run test",
-    "test-addon-prefixer": "cd prefixer && npm run test",
-    "test-ts": "tsc -p ts-tests",
+    "test": "npm run test-unit -- --ci --coverage && npm run build",
+    "test-unit": "jest --setupFiles ./tests/setup.js --roots ./src packages",
     "clean": "rimraf dist",
     "size-check": "filesize",
-    "build": "npm run build:core && npm run build:prefixer && npm run build:global && npm run build:should-forward-prop",
-    "build:prefixer": "cd ./prefixer && npm run build",
-    "build:global": "cd ./global && npm run build",
-    "build:should-forward-prop": "cd ./should-forward-prop && npm run build",
+    "build": "npm run build:core",
     "build:core": "npm run clean && npm run build:dist && npm run size-check",
-    "build:lib": "microbundle --entry src/index.js --name goober --no-sourcemap",
+    "build:lib": "microbundle --entry src/index.js --name buttered --no-sourcemap",
     "build:dist": "npm run build:lib -- --output dist",
     "build:debug": "npm run build:lib -- --output debug --no-compress",
-    "dev": "npm run clean && microbundle watch --entry src/index.js --output dist --name goober",
+    "dev": "npm run clean && microbundle watch --entry src/index.js --output dist --name buttered",
     "deploy": "npm run build && npm publish",
     "format": "prettier \"**/*.{js,ts,tsx,md}\" --write"
   },
   "keywords": [
     "css-in-js",
-    "goober",
+    "buttered",
     "styled",
     "emotion",
     "styled-components",
@@ -91,10 +69,10 @@
     "react",
     "preact"
   ],
-  "author": "Cristian <botecristian@yahoo.com>",
+  "author": "Cristian <botecristian@yahoo.com>, Tobias Herber <tobias@varld.co>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cristianbote/goober"
+    "url": "https://github.com/herber/buttered"
   },
   "license": "ISC",
   "devDependencies": {
@@ -115,22 +93,25 @@
     "microbundle": "^0.12.0",
     "preact": "^10.0.0",
     "prettier": "2.0.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17",
+    "react-dom": "^17",
     "rimraf": "3.0.2",
     "styled-components": "^5.2.1",
+    "style-vendorizer": "^2.0.0",
     "typescript": "^3.6.3"
   },
   "peerDependencies": {
-    "csstype": "^2.6.2"
+    "csstype": "^2.6.2",
+    "react": "^16.6.0 || ^17",
+    "react-dom": "^16.6.0 || ^17"
   },
-  "typings": "./goober.d.ts",
+  "typings": "./buttered.d.ts",
   "filesize": {
-    "./dist/goober.modern.js": {
-      "gzip": "1200B"
+    "./dist/buttered.modern.js": {
+      "gzip": "2000B"
     },
-    "./dist/goober.js": {
-      "gzip": "1200B"
+    "./dist/buttered.js": {
+      "gzip": "2000B"
     }
   },
   "lint-staged": {
@@ -145,6 +126,6 @@
   },
   "collective": {
     "type": "opencollective",
-    "url": "https://opencollective.com/goober"
+    "url": "https://opencollective.com/buttered"
   }
 }
