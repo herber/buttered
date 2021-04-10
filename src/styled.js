@@ -1,16 +1,5 @@
+import React from 'react';
 import { css } from './css';
-import { parse } from './core/parse';
-
-let h, useTheme, fwdProp;
-function setup(pragma, prefix, theme, forwardProps) {
-    // This one needs to stay in here, so we won't have cyclic dependencies
-    parse.p = prefix;
-
-    // These are scope to this context
-    h = pragma;
-    useTheme = theme;
-    fwdProp = forwardProps;
-}
 
 /**
  * styled function
@@ -31,7 +20,7 @@ function styled(tag, forwardRef) {
             let _previousClassName = _props.className || Styled.className;
 
             // _ctx.p: is the props sent to the context
-            _ctx.p = Object.assign({ theme: useTheme && useTheme() }, _props);
+            // _ctx.p = Object.assign({ theme: useTheme && useTheme() }, _props);
 
             // Set a flag if the current components had a previous className
             // similar to goober. This is the append/prepend flag
@@ -43,23 +32,21 @@ function styled(tag, forwardRef) {
                 css.apply(_ctx, _args) + (_previousClassName ? ' ' + _previousClassName : '');
 
             // If the forwardRef fun is defined we have the ref
-            if (forwardRef) {
-                _props.ref = ref;
-            }
+            _props.ref = ref;
 
             // Let the closure do the capture, cause it might get removed in the fwdProp
             let _as = _props.as || tag;
 
-            // Handle the forward props filter if defined and _as is a string
+            /*// Handle the forward props filter if defined and _as is a string
             if (fwdProp && _as[0]) {
                 fwdProp(_props);
-            }
+            }*/
 
-            return h(_as, _props);
+            return React.createElement(_as, _props);
         }
 
-        return forwardRef ? forwardRef(Styled) : Styled;
+        return React.forwardRef(Styled);
     };
 }
 
-export { styled, setup };
+export { styled };

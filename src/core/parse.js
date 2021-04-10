@@ -1,3 +1,5 @@
+import { prefix } from '../prefix';
+
 /**
  * Parses the object into css, scoped, blocks
  * @param {Object} obj
@@ -47,12 +49,8 @@ export let parse = (obj, selector) => {
             if (key[0] == '@' && key[1] == 'i') {
                 outer = key + ' ' + val + ';';
             } else {
-                // Push the line for this property
-                current += parse.p
-                    ? // We have a prefixer and we need to run this through that
-                      parse.p(key.replace(/[A-Z]/g, '-$&').toLowerCase(), val)
-                    : // Nope no prefixer just append it
-                      key.replace(/[A-Z]/g, '-$&').toLowerCase() + ':' + val + ';';
+                // Prefix styles
+                current += prefix(key.replace(/[A-Z]/g, '-$&').toLowerCase(), val);
             }
         }
     }
