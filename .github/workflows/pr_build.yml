@@ -13,7 +13,5 @@ jobs:
             - name: Installing packages
               run: |
                   npm install
-                  npm --prefix ./prefixer install ./prefixer
-                  npm --prefix ./global install ./global
             - name: Run tests
               run: npm run test
