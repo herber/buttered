@@ -3,8 +3,7 @@ const Benchmark = require('benchmark');
 const react = require('react');
 const { renderToString: render } = require('react-dom/server');
 
-const goober = require('../dist/goober');
-goober.setup(react.createElement);
+const buttered = require('../dist/buttered');
 
 const styled = require('styled-components').default;
 const styledVersion = require('styled-components/package.json').version;
@@ -55,8 +54,8 @@ function renderComponent(Foo) {
 function createSuite(name, arg) {
     const suite = new Benchmark.Suite(name);
     suite
-        .add('goober', () => {
-            renderComponent(goober.styled('div')(arg()));
+        .add('buttered', () => {
+            renderComponent(buttered.styled('div')(arg()));
         })
         .add(`styled-components@${styledVersion}`, () => {
             renderComponent(styled.div(arg()));
