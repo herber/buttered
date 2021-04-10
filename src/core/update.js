@@ -1,4 +1,5 @@
 import { getSheet } from './get-sheet';
+
 /**
  * Extracts and wipes the cache
  * @returns {String}

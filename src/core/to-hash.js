@@ -12,5 +12,5 @@ export let toHash = (str) => {
         l = str.length,
         out = 11;
     while (i < l) out = (101 * out + str.charCodeAt(i++)) >>> 0;
-    return 'butter_' + out;
+    return 'butter_' + out.toString(36);
 };
