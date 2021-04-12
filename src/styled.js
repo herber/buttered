@@ -19,7 +19,7 @@ function styled(tag) {
             let _previousClassName = _props.className || Styled.className;
 
             // _ctx.p: is the props sent to the context
-            _ctx.p = _props;
+            _ctx.p = Object.assign({}, _props);
 
             // Set a flag if the current components had a previous className
             // similar to goober. This is the append/prepend flag
