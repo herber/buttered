@@ -25,7 +25,7 @@ yarn add buttered
 
 ## About
 
-Goober is the greatest thing that happened to CSS-in-JS in year (imo) but the repetitive setup is a bit cumbersome. Thats where Buttered comes into play. Buttered is already set up with the options that most React developers want.
+Goober is the greatest thing that happened to CSS-in-JS in years (imo) but the repetitive setup is a bit cumbersome. Thats where Buttered comes into play. Buttered is already set up with the options that most React developers want.
 
 ## API
 
