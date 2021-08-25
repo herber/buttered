@@ -37,7 +37,7 @@ function styled(tag) {
             let _as = _props.as || tag;
 
             for (let prop in _props) {
-                if (!isPropValid('prop')) {
+                if (!isPropValid(prop)) {
                     delete _props[prop];
                 }
             }
