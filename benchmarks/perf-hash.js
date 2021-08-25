@@ -6,20 +6,20 @@ const suite = new Benchmark.Suite('HASH!');
 suite
     .add('buttered original HASH', () => {
         const c =
-            'butter_' + str.split('').reduce((out, s) => (101 * out + s.charCodeAt(0)) >>> 0, 11);
+            'bt_' + str.split('').reduce((out, s) => (101 * out + s.charCodeAt(0)) >>> 0, 11);
     })
     .add('buttered optimized HASH', () => {
         let i = 0,
             l = str.length,
             out = 11;
         while (i < l) out = (101 * out + str.charCodeAt(i++)) >>> 0;
-        const c = 'butter_' + out;
+        const c = 'bt_' + out;
     })
     .add('twind HASH', () => {
         let i = str.length - 1,
             out = 9;
         while (i >= 0) out = Math.imul(out ^ str.charCodeAt(i--), 0x5f356495);
-        const c = 'butter_' + ((out ^ (out >>> 9)) >>> 0).toString(36);
+        const c = 'bt_' + ((out ^ (out >>> 9)) >>> 0).toString(36);
     })
     .on('start', function (e) {
         console.log('\nStarting', e.currentTarget.name);
