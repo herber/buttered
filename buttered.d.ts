@@ -37,6 +37,8 @@ declare namespace buttered {
     };
 
     const styled: StyledFunction;
+
+    function ignoreProp(prop: string): void;
     function extractCss(): string;
     function glob(
         tag: CSSAttribute | TemplateStringsArray | string,

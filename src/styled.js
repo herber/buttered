@@ -2,6 +2,8 @@ import React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
 import { css } from './css';
 
+let ignored = new Set();
+
 /**
  * styled function
  * @param {string} tag
@@ -37,7 +39,7 @@ function styled(tag) {
             let _as = _props.as || tag;
 
             for (let prop in _props) {
-                if (!isPropValid(prop)) {
+                if (ignored.has(prop) || !isPropValid(prop)) {
                     delete _props[prop];
                 }
             }
@@ -49,4 +51,8 @@ function styled(tag) {
     };
 }
 
-export { styled };
+function ignoreProp(p) {
+    ignored.add(p);
+}
+
+export { styled, ignoreProp };
