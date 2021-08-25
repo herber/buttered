@@ -114,18 +114,11 @@
       "gzip": "2000B"
     }
   },
-  "lint-staged": {
-    "*.{js,ts,tsx,md}": [
-      "prettier --write"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/buttered"
+  },
+  "dependencies": {
+    "@emotion/is-prop-valid": "^1.1.0"
   }
 }

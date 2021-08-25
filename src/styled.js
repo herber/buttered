@@ -1,4 +1,5 @@
 import React from 'react';
+import isPropValid from '@emotion/is-prop-valid';
 import { css } from './css';
 
 /**
@@ -24,7 +25,7 @@ function styled(tag) {
             // Set a flag if the current components had a previous className
             // similar to goober. This is the append/prepend flag
             // The _empty_ space compresses better than `\s`
-            _ctx.o = / *butter_\d+/g.test(_previousClassName);
+            _ctx.o = / *bt_\d+/g.test(_previousClassName);
 
             _props.className =
                 css.apply(_ctx, _args) + (_previousClassName ? ' ' + _previousClassName : '');
@@ -35,10 +36,11 @@ function styled(tag) {
             // Let the closure do the capture, cause it might get removed in the fwdProp
             let _as = _props.as || tag;
 
-            /*// Handle the forward props filter if defined and _as is a string
-            if (fwdProp && _as[0]) {
-                fwdProp(_props);
-            }*/
+            for (let prop in _props) {
+                if (!isPropValid('prop')) {
+                    delete _props[prop];
+                }
+            }
 
             return React.createElement(_as, _props);
         }
